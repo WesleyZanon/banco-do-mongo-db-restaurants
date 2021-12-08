@@ -1,0 +1,38 @@
+WESLEY DAVI ZANON NOVAES
+RA: 190545
+
+db.EL03.find({},{'_id':0,'restaurant_id':1,'name':1,'borough':1,'cuisine':1})
+
+db.EL03.find({'borough': 'Bronx'},{'borough': 0,'_id':0,'restaurant_id':1,'name':1,'borough':1,'cuisine':1})
+
+db.EL03.find({'borough': 'Bronx'},{'borough': 0,'_id':0,'restaurant_id':1,'name':1,'borough':1,'cuisine':1}).count()
+
+MongoDB Enterprise atlas-bdybjf-shard-0:PRIMARY> db.EL03.find({'borough': 'Bronx'},{'borough': 0,'_id':0,'restaurant_id':1,'name':1,'borough':1,'cuisine':1}).sort({'restaurant_id':1}).limit(5)
+
+db.EL03.find({'borough': 'Bronx'},{'borough': 0,'_id':0,'restaurant_id':1,'name':1,'borough':1,'cuisine':1}).sort({'restaurant_id':1}).skip(5)
+
+
+
+db.EL03.find({$or:[{cuisine: 'Chinese'},{cuisine: 'American '}]},{'_id':0,'restaurant_id':1,'name':1,'borough':1,'cuisine':1})
+
+
+db.EL03.find({$nor:[{borough: 'Brooklyn'},{cuisine: 'American '}]},{'_id':0,'restaurant_id':1,'name':1,'borough':1,'cuisine':1}).sort({cuisine:-1})
+
+db.EL03.find({$or:[{borough: 'Staten Island'},{borough: 'Queens'},{borough: 'Bronx'},{borough: 'Brooklyn'}]},{'_id':1,'name':1,'borough':1,'cuisine':1})
+
+db.EL03.find().sort({name: 1}) 
+
+db.EL03.update({cuisine: 'Hamburgers'},{$set:{cuisine: 'Original Hamburguers'}}) 
+
+db.EL03.update({name: "Wendy'S"},{$inc:{Since: 1960}})
+
+db.EL03.find({ street: { $exists: false }},{_id: 0, name: 1, street: 1})
+
+db.EL03.find({grades: {score: {$mod: [7,0]}}},{_id: 1,restaurant_id: 1, name: 1, grades: {score: 1}})
+
+db.EL03.find({name: {$in: ["mon"]}},,{_id: 0, name:1,borough: 1,address: {coord: 1},cuisine:1})
+
+db.EL03.find({borough: {$in: ["Queens"]}},{_id: 0, name:1,cuisine:1,restaurant_id:1}).pretty()
+
+
+
